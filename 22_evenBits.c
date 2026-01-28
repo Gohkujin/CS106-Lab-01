@@ -8,7 +8,9 @@
  */
 int evenBits(void)
 {
-    return 2;
+    int byte = 0x55;
+    int two_byte = (byte << 8) | byte;
+    int four_byte = two_byte << 16 | two_byte;
 }
 
 int test_evenBits(void)

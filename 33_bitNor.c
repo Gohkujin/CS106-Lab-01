@@ -7,9 +7,10 @@
  *   Max ops: 8
  *   Rating: 1
  */
+// NOR is not 'or' means opposite only
 int bitNor(int x, int y)
 {
-    return 2;
+    return (~x & ~y);
 }
 
 int test_bitNor(int x, int y)

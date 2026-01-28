@@ -3,13 +3,16 @@
 /* 
  * bitAnd - x&y using only ~ and | 
  *   Example: bitAnd(6, 5) = 4
+ *   0110 0101 = 0100
  *   Legal ops: ~ |
  *   Max ops: 8
  *   Rating: 1
  */
 int bitAnd(int x, int y)
 {
-    return 2;
+    // i want pure 0 to turn to 1
+    // take 
+    return ~(~x | ~y);
 }
 
 int test_bitAnd(int x, int y)

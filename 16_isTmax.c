@@ -9,7 +9,12 @@
  */
 int isTmax(int x)
 {
-    return 2;
+    return !(~x + ~x) & !!(x + 1);
+
+    // int nx = ~x;
+    // int nxnz = !!nx;
+    // int nxovf = !(nx + nx);
+    // return nxnz & nxovf;
 }
 
 int test_isTmax(int x)

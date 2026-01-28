@@ -10,7 +10,13 @@
  */
 int upperBits(int n)
 {
-    return 2;
+    int discard = 32 - n;
+    int flip_no = (~(0) << discard);
+    // this safety masks helps the most if n is a non-zero crazy number - it humbles it to become
+    // 1 LES GO
+    int safety_mask = !!n << 31;
+    return safety_mask & flip_no;  
+    // return (((!!n) << 31) >> 31) & ((1 << 31) >> (n + (~0)));
 }
 
 int test_upperBits(int x)
@@ -24,7 +30,7 @@ int test_upperBits(int x)
 
 int main(void)
 {
-    int x = 32;
+    int x = 0;
     printf("expected: %x\n", upperBits(x));
     printf("actual  : %x\n", test_upperBits(x));
 }

@@ -10,7 +10,11 @@
  */
 int fitsShort(int x)
 {
-    return 2;
+    // if x can fit into short, the first 16 bits can be discarded as they are signed extensions
+    // of the 16th bit
+    int shift1 = x << 16;
+    int shift2 = shift1 >> 16;
+    return !(x ^ shift2);
 }
 
 int test_fitsShort(int x)
@@ -22,6 +26,6 @@ int test_fitsShort(int x)
 int main(void)
 {
     int x = 0;
-    printf("expected: %x\n", fitsShort(x));
-    printf("actual  : %x\n", test_fitsShort(x));
+    printf("actual: %x\n", fitsShort(x));
+    printf("expected: %x\n", test_fitsShort(x));
 }

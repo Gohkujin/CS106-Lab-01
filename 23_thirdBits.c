@@ -8,7 +8,10 @@
  */
 int thirdBits(void)
 {
-    return 2;
+    int bytehalf = 0x9;
+    int three_bytehalf = bytehalf | ((bytehalf << 2) << 4) | ((bytehalf << 1) << 8);
+    int four_byte = (three_bytehalf << 24) | (three_bytehalf << 12) | three_bytehalf;
+    return four_byte;
 }
 
 int test_thirdBits(void)
